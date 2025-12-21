@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hearthlight</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+</head>
+<body>
+<div id="cursor">
+  <span>Explore</span>
+</div>
+<footer id="footer">
+  © 2025 Hearthlight
+</footer>
+
+
+  <main id="scene">
+<!-- 🎵 Ambient Sound Selector -->
+<div id="sound-deck">
+
+  <button class="sound-card" data-sound="fire">
+    <span class="sound-title">Fireplace</span>
+    <span class="sound-toggle"></span>
+  </button>
+
+  <button class="sound-card" data-sound="wind">
+    <span class="sound-title">Winter Wind</span>
+    <span class="sound-toggle"></span>
+  </button>
+
+  <button class="sound-card" data-sound="music">
+    <span class="sound-title">Soft Carol</span>
+    <span class="sound-toggle"></span>
+  </button>
+
+</div>
+
+  <div id="logo-backdrop"></div>
+  <img id="logo" src="assets/logo/hearthlight3.svg" alt="Hearthlight">
+  <div id="heat-shimmer"></div>
+  <div id="fire-glow"></div>
+  <div id="embers"></div>
+
+  <div id="candle-glow"></div>
+  <div id="snow"></div>
+  <div id="tree-sparkles"></div>
+
+  <img
+    id="room"
+    src="assets/images/festive-living-room.jpg"
+    alt="Festive living room"
+  />
+
+  <button id="fireplace-hotspot" aria-label="Fireplace"></button>
+
+
+</main>
+
+<script src="main.js"></script>
+
