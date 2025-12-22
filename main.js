@@ -1,13 +1,33 @@
-const roomImg = document.getElementById("room");
-const scene = document.getElementById("scene");
+gsap.globalTimeline.pause();
 
-if (roomImg.complete) {
-  scene.style.opacity = "1";
-} else {
-  roomImg.addEventListener("load", () => {
-    scene.style.opacity = "1";
-  });
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const roomImg = document.getElementById("room");
+
+  function reveal() {
+    // reveal glow layers
+    document.querySelectorAll(
+      "#fire-glow, #candle-glow, #heat-shimmer, #embers"
+    ).forEach(el => (el.style.opacity = ""));
+
+    // start embers
+    startEmbers();
+
+    // play gsap
+    gsap.globalTimeline.play();
+  }
+
+  // If image already cached/ready
+  if (roomImg.complete && roomImg.naturalWidth > 0) {
+    reveal();
+  } else {
+    roomImg.addEventListener("load", reveal, { once: true });
+
+    // ✅ fallback: never stay “hidden” forever
+    setTimeout(reveal, 2500);
+  }
+});
+
+
 
 const fireGlow = document.getElementById("fire-glow");
 //  FIRE BODY MOVEMENT (PRIMARY FLAME MOTION)
@@ -71,6 +91,15 @@ gsap.to("#heat-shimmer", {
   //  EMBERS — RISING FIRE PARTICLES
 const embersContainer = document.getElementById("embers");
 
+let emberInterval = null;
+
+
+function startEmbers() {
+  if (emberInterval) return; // prevent duplicates
+  emberInterval = setInterval(createEmber, 140);
+}
+
+
 function createEmber() {
   const ember = document.createElement("div");
   ember.className = "ember";
@@ -78,11 +107,12 @@ function createEmber() {
 
   //  START DEEPER & HOTTER
   gsap.set(ember, {
-    x: Math.random() * embersContainer.offsetWidth,
-    y: embersContainer.offsetHeight - 6,   // ⬅️ INSIDE FIRE BED
-    scale: Math.random() * 0.8 + 0.6,       // ⬅️ BIGGER FLAMES
-    opacity: Math.random() * 0.6 + 0.6
-  });
+  x: Math.random() * embersContainer.offsetWidth,
+  y: embersContainer.offsetHeight - 6,
+  scale: Math.random() * 0.8 + 0.6,
+  opacity: Math.random() * 0.6 + 0.6
+});
+
 
   //  RISE STRONGER + WILDER
  gsap.to(ember, {
@@ -97,8 +127,7 @@ function createEmber() {
 }
 
 
-//  SPAWN FASTER = INTENSE FIRE
-setInterval(createEmber, 140);
+
 
 
 
@@ -302,7 +331,7 @@ soundCards.forEach(card => {
 
     if (!isActive) {
 
-      // 🔥 stop previously playing sound
+      //  stop previously playing sound
       if (currentAudio && currentAudio !== audio) {
         fadeOut(currentAudio);
         if (currentCard) currentCard.classList.remove("active");
