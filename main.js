@@ -3,22 +3,58 @@ const fireGlow = document.getElementById("fire-glow");
 gsap.timeline({ repeat: -1, yoyo: true })
   .to("#fire-glow", {
     scaleX: 1.15,
-    scaleY: 1.08,
-    x: 6,
+    scaleY: 1.05,
+    x: 4,
     y: -6,
-    opacity: 0.9,
     duration: 1.1,
     ease: "sine.inOut"
   })
   .to("#fire-glow", {
     scaleX: 0.95,
-    scaleY: 1.12,
-    x: -4,
+    scaleY: 1.1,
+    x: -3,
     y: 4,
-    opacity: 0.65,
     duration: 0.9,
     ease: "sine.inOut"
   });
+
+//  FIRE — ALWAYS ON (SINGLE TIMELINE, NO CONFLICTS)
+gsap.timeline({ repeat: -1, yoyo: true })
+  .to(fireGlow, {
+    scale: 1.12,
+    x: 6,
+    y: -4,
+    opacity: 0.9,
+    duration: 0.9,
+    ease: "sine.inOut"
+  })
+  .to(fireGlow, {
+    scale: 1.05,
+    x: -4,
+    y: 2,
+    opacity: 0.65,
+    duration: 0.8,
+    ease: "sine.inOut"
+  });
+
+  gsap.to("#heat-shimmer", {
+  x: "+=6",
+  y: "-=4",
+  repeat: -1,
+  yoyo: true,
+  duration: 1.4,
+  ease: "sine.inOut"
+});
+
+gsap.to("#heat-shimmer", {
+  y: "-=10",
+  scaleX: 1.08,
+  scaleY: 0.92,
+  repeat: -1,
+  yoyo: true,
+  duration: 1.2,
+  ease: "sine.inOut"
+});
 
 
   //  EMBERS — RISING FIRE PARTICLES
@@ -51,10 +87,7 @@ function createEmber() {
 
 
 //  SPAWN FASTER = INTENSE FIRE
-gsap.delayedCall(0.14, function spawn() {
-  createEmber();
-  gsap.delayedCall(0.14, spawn);
-});
+setInterval(createEmber, 140);
 
 
 
