@@ -746,7 +746,7 @@ body {
 #active-sound-toggle {
   all: unset;
   cursor: pointer;
-  width: 50px;
+  width: 30px;
 
   padding: 8px 18px;
   border-radius: 999px;
