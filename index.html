@@ -36,6 +36,52 @@
     <span class="sound-toggle"></span>
   </button>
 
+  <button class="sound-card" data-sound="warm-winter">
+  <span class="sound-title">Warm Winter</span>
+  <span class="sound-toggle"></span>
+</button>
+
+<button class="sound-card" data-sound="happy-jazz">
+  <span class="sound-title">Happy Jazz</span>
+  <span class="sound-toggle"></span>
+</button>
+
+<button class="sound-card" data-sound="snowfall-jazz">
+  <span class="sound-title">Snowfall Jazz</span>
+  <span class="sound-toggle"></span>
+</button>
+
+<button class="sound-card" data-sound="snowy-night">
+  <span class="sound-title">Snowy Night</span>
+  <span class="sound-toggle"></span>
+</button>
+
+<button class="sound-card" data-sound="sound-smooth">
+  <span class="sound-title">Smooth</span>
+  <span class="sound-toggle"></span>
+</button>
+
+<button class="sound-card" data-sound="winter-jazz">
+  <span class="sound-title">Winter Jazz</span>
+  <span class="sound-toggle"></span>
+</button>
+
+<button class="sound-card" data-sound="relax-holiday">
+  <span class="sound-title">Relax Holiday</span>
+  <span class="sound-toggle"></span>
+</button>
+
+<button class="sound-card sound-add" id="add-sound">
+  <span class="sound-title">Add Ambience</span>
+  <span class="sound-toggle">+</span>
+</button>
+
+<input
+  type="file"
+  id="sound-file-input"
+  accept="audio/*"
+  hidden
+/>
 </div>
 
   <div id="logo-backdrop"></div>
@@ -58,6 +104,11 @@
 
 
 </main>
+<div id="audio-message" class="audio-message hidden">
+  <span id="audio-message-text"></span>
+</div>
 
 <script src="main.js"></script>
 
+</body>
+</html>

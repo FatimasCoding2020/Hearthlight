@@ -140,7 +140,7 @@ body {
 }
 
 /* ✨ INDIVIDUAL SPARKLE */
-./* ✨ TREE SPARKLES & LIGHTS */
+/* ✨ TREE SPARKLES & LIGHTS */
 .tree-sparkle {
   position: absolute;
   width: 6px;
@@ -253,7 +253,7 @@ body {
   border: 1px solid rgba(255, 160, 80, 0.2);
   backdrop-filter: blur(6px);
 
-  transform: translate(-50%, -50%) scale(0.4);
+  transform: translate(-50%, -50%) scale(1);
   opacity: 0;
 
   transition: background 0.3s ease;
@@ -265,7 +265,7 @@ body {
 
 /* Hover state */
 #cursor.active {
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1.1);
   background: rgba(255, 140, 60, 0.25);
 }
 
@@ -442,21 +442,16 @@ body {
     transform 0.4s ease;
 }
 
-/* Show deck */
-#sound-deck.active {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
-}
 
-/* 🎚️ SOUND CARD */
+/* 🎚️ SOUND CARD (ALIGNED + SCROLL SAFE) */
 .sound-card {
   all: unset;
   cursor: pointer;
 
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between; /* title left, dot right */
+  gap: 12px;
 
   padding: 10px 16px;
   border-radius: 999px;
@@ -467,6 +462,11 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.8);
+
+  white-space: nowrap;   /* prevents text wrapping */
+  line-height: 1;        /* fixes vertical misalignment */
+
+  flex: 0 0 auto;        /* 🔥 CRITICAL for scrolling */
 
   transition:
     background 0.3s ease,
@@ -479,17 +479,27 @@ body {
   transform: translateY(-1px);
 }
 
+.sound-title {
+  display: block;
+}
+
+
 /* 🔘 TOGGLE DOT */
 .sound-toggle {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: 999px;
+
+  display: block;        /* ✅ prevents inline stretching */
+  flex: 0 0 8px;         /* ✅ prevents flex distortion */
+  aspect-ratio: 1 / 1;   /* ✅ guarantees circle */
 
   background: rgba(255,255,255,0.3);
   box-shadow: 0 0 0 rgba(255,180,80,0);
 
   transition: all 0.3s ease;
 }
+
 
 /* 🔥 ACTIVE SOUND */
 .sound-card.active {
@@ -514,8 +524,176 @@ body {
     gap: 10px;
   }
 
-  .sound-card {
-    font-size: 11px;
-    padding: 8px 12px;
-  }
+  
+
+}
+
+/* 🎚️ SCROLLABLE SOUND SLIDER */
+/* 🎵 FLOATING SOUND DECK (SCROLLABLE) */
+#sound-deck {
+  position: fixed;
+  bottom: 96px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+
+  padding: 14px 18px;
+  border-radius: 999px;
+
+  background: rgba(20, 20, 20, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
+
+  z-index: 998;
+
+  /* 👇 IMPORTANT */
+  opacity: 0;
+  pointer-events: auto;   /* ✅ ALWAYS AUTO */
+
+  /* 👇 SCROLL */
+  max-width: min(92vw, 900px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  touch-action: pan-x;
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+#sound-deck::-webkit-scrollbar {
+  display: none;
+}
+
+#sound-deck.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 🚫 Disable text selection highlight */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* 🚫 Remove mobile / chrome tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 🚫 Remove focus outline glow */
+*:focus {
+  outline: none;
+}
+
+/* 🚫 Prevent selection background */
+::selection {
+  background: transparent;
+}
+
+::-moz-selection {
+  background: transparent;
+}
+
+.sound-add {
+  background: rgba(255,255,255,0.05);
+  border: 1px dashed rgba(255,255,255,0.25);
+}
+
+.sound-add:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.sound-add .sound-toggle {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;          /* ✅ perfect circle */
+  font-size: 14px;
+  font-weight: 600;
+
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.12);
+
+  box-shadow:
+    0 0 8px rgba(255,255,255,0.25);
+}
+.sound-add:hover .sound-toggle {
+  background: rgba(255,180,90,0.25);
+  box-shadow:
+    0 0 12px rgba(255,180,90,0.6);
+}
+
+
+/* 🗑️ Remove user-added sound button */
+.sound-remove {
+  margin-left: 8px;
+  font-size: 12px;
+  opacity: 0;
+  cursor: pointer;
+  color: rgba(255,255,255,0.6);
+}
+
+.sound-card:hover .sound-remove {
+  opacity: 0.7;
+}
+
+.sound-remove:hover {
+  opacity: 1;
+  color: #fff;
+}
+/* 🎵 AUDIO MESSAGE TOAST */
+.audio-message {
+  position: fixed;
+
+  /* ⬆️ Move ABOVE the sound deck */
+  bottom: 220px;
+
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+
+  /* 🌤️ Softer, warmer look */
+  background: rgba(40, 40, 40, 0.65);
+  color: rgba(255, 255, 255, 0.95);
+
+  padding: 14px 22px;
+  border-radius: 999px;
+
+  font-size: 13px;
+  letter-spacing: 0.06em;
+
+  box-shadow:
+    0 12px 35px rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  opacity: 1;
+  z-index: 10001;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.audio-message.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(20px);
+  pointer-events: none;
 }
