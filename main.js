@@ -258,6 +258,7 @@ gsap.from("#logo", {
     AMBIENT SOUND SYSTEM
 ================================ */
 
+const DEFAULT_VOLUME = 0.5; // middle
 const soundDeck = document.getElementById("sound-deck");
 const soundCards = document.querySelectorAll(".sound-card");
 const audioMessage = document.getElementById("audio-message");
@@ -301,7 +302,7 @@ Object.values(sounds).forEach(audio => {
 });
 
 /* Cinematic fade helpers */
-function fadeIn(audio, target = 0.8) {
+function fadeIn(audio, target = DEFAULT_VOLUME) {
   audio.volume = 0;
   audio.play();
   gsap.to(audio, {
@@ -475,8 +476,11 @@ function showActiveSound(name, audio, card) {
   activeToggle.textContent = "ON";
   activeToggle.classList.remove("off");
 
-  //  sync slider with current audio volume
-  activeVolume.value = Math.round(audio.volume * 100);
+  // 🔥 RESET SLIDER TO MIDDLE
+  activeVolume.value = DEFAULT_VOLUME * 100;
+
+  // 🔥 SYNC AUDIO TO SLIDER
+  audio.volume = DEFAULT_VOLUME;
 
   activeCard.classList.remove("hidden");
 
