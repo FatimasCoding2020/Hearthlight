@@ -3,3 +3,7 @@
 </p>
 
 <div align="center">
+
+[Deployed Project](https://fatimascoding2020.github.io/Hearthlight/)
+
+</div>
