@@ -228,11 +228,9 @@ body {
 
 
 
-/* Hide default cursor on desktop */
-@media (hover: hover) {
-  body {
-    cursor: none;
-  }
+
+body {
+  cursor: default;
 }
 
 #cursor {

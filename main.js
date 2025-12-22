@@ -211,37 +211,6 @@ gsap.from("#logo", {
 
 
 
-const cursor = document.getElementById("cursor");
-
-if (window.matchMedia("(hover: hover)").matches) {
-  let cursorVisible = false;
-
-  const setX = gsap.quickSetter(cursor, "x", "px");
-  const setY = gsap.quickSetter(cursor, "y", "px");
-
-  document.addEventListener("mousemove", (e) => {
-    setX(e.clientX);
-    setY(e.clientY);
-
-    if (!cursorVisible) {
-      cursorVisible = true;
-      gsap.to(cursor, { opacity: 1, duration: 0.3 });
-    }
-  });
-
-  hotspot.addEventListener("mouseenter", () => cursor.classList.add("active"));
-  hotspot.addEventListener("mouseleave", () => cursor.classList.remove("active"));
-}
-
-  document.addEventListener("mousedown", () => {
-    gsap.to(cursor, { scale: 0.9, duration: 0.1 });
-  });
-
-  document.addEventListener("mouseup", () => {
-    gsap.to(cursor, { scale: 1, duration: 0.2 });
-  });
-
-
 
 
 
