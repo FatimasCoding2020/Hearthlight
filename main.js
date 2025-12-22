@@ -312,22 +312,38 @@ function fadeOut(audio) {
 }
 
 /* Sound card interactions */
+/* Sound card interactions */
 soundCards.forEach(card => {
   const key = card.dataset.sound;
   const audio = sounds[key];
 
   card.addEventListener("click", () => {
     const isActive = card.classList.contains("active");
+    const name = card.querySelector(".sound-title").textContent;
 
     if (!isActive) {
+
+      // 🔥 stop previously playing sound
+      if (currentAudio && currentAudio !== audio) {
+        fadeOut(currentAudio);
+        if (currentCard) currentCard.classList.remove("active");
+      }
+
       fadeIn(audio, key === "fire" ? 0.9 : key === "wind" ? 0.35 : 0.25);
       card.classList.add("active");
+      showActiveSound(name, audio, card);
+
     } else {
       fadeOut(audio);
       card.classList.remove("active");
+      hideActiveSound();
     }
   });
 });
+
+
+
+
 const addSoundBtn = document.getElementById("add-sound");
 const fileInput = document.getElementById("sound-file-input");
 
@@ -361,7 +377,7 @@ audio.addEventListener("loadedmetadata", () => {
 audio.loop = true;
 audio.volume = 0;
 
-  // ⬇️ EVERYTHING YOU ALREADY HAVE GOES INSIDE HERE
+  //  EVERYTHING YOU ALREADY HAVE GOES INSIDE HERE
 
   const id = `user-sound-${Date.now()}`;
   const cleanName = file.name.replace(/\.[^/.]+$/, "");
@@ -390,18 +406,31 @@ audio.volume = 0;
   // Insert BEFORE the + card
   soundDeck.insertBefore(card, addSoundBtn);
 
-  // 🎵 PLAY / PAUSE
+  //  PLAY / PAUSE
+  //  PLAY / PAUSE (USER-ADDED SOUND)
   card.addEventListener("click", () => {
-    const isActive = card.classList.contains("active");
+  const isActive = card.classList.contains("active");
+  const name = card.querySelector(".sound-title").textContent;
 
-    if (!isActive) {
-      fadeIn(audio, 0.25);
-      card.classList.add("active");
-    } else {
-      fadeOut(audio);
-      card.classList.remove("active");
+  if (!isActive) {
+
+    // 🔥 STOP PREVIOUS SOUND
+    if (currentAudio && currentAudio !== audio) {
+      fadeOut(currentAudio);
+      if (currentCard) currentCard.classList.remove("active");
     }
-  });
+
+    fadeIn(audio, 0.25);
+    card.classList.add("active");
+    showActiveSound(name, audio, card);
+
+  } else {
+    fadeOut(audio);
+    card.classList.remove("active");
+    hideActiveSound();
+  }
+});
+
 
   // Auto-scroll to new sound
   soundDeck.scrollTo({
@@ -415,10 +444,57 @@ audio.volume = 0;
 
 }); // ✅ closes fileInput.addEventListener("change")
 
+/* ===============================
+    ACTIVE SOUND CARD
+================================ */
+
+const activeCard = document.getElementById("active-sound-card");
+const activeName = document.getElementById("active-sound-name");
+const activeToggle = document.getElementById("active-sound-toggle");
+
+let currentAudio = null;
+let currentCard = null;
+
+function showActiveSound(name, audio, card) {
+  activeName.textContent = name;
+  activeToggle.textContent = "ON";
+  activeToggle.classList.remove("off");
+
+  activeCard.classList.remove("hidden");
+
+  currentAudio = audio;
+  currentCard = card;
+}
+
+function hideActiveSound() {
+  activeCard.classList.add("hidden");
+  currentAudio = null;
+  currentCard = null;
+}
+
+activeToggle.addEventListener("click", () => {
+  if (!currentAudio) return;
+
+  const isOn = !activeToggle.classList.contains("off");
+
+  if (isOn) {
+    fadeOut(currentAudio);
+    activeToggle.classList.add("off");
+    activeToggle.textContent = "OFF";
+
+    if (currentCard) currentCard.classList.remove("active");
+  } else {
+    fadeIn(currentAudio, 0.25);
+    activeToggle.classList.remove("off");
+    activeToggle.textContent = "ON";
+
+    if (currentCard) currentCard.classList.add("active");
+  }
+});
 
 
 /* ===============================
-   ✨ AUTO-HIDE SOUND UI
+    AUTO-HIDE SOUND UI
 ================================ */
 
 let uiTimeout;

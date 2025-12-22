@@ -697,3 +697,107 @@ body {
   transform: translateX(-50%) translateY(20px);
   pointer-events: none;
 }
+/* ===============================
+   ACTIVE SOUND POPUP (CENTER)
+================================ */
+
+.active-sound {
+  position: fixed;
+  left: 50%;
+  bottom: 180px;               /* above sound deck */
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 18px 26px;
+  border-radius: 18px;         /* ⬅️ slightly square */
+
+  background: rgba(120, 20, 20, 0.35);  /* 🎄 transparent warm red */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  box-shadow:
+    0 0 0 1px rgba(255, 200, 120, 0.25),
+    0 18px 45px rgba(0, 0, 0, 0.45);
+
+  z-index: 10002;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+/* hidden state */
+.active-sound.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(12px);
+  pointer-events: none;
+}
+
+
+/* TOGGLE BUTTON */
+#active-sound-toggle {
+  all: unset;
+  cursor: pointer;
+
+  padding: 8px 18px;
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+
+  color: #3b2a12;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 210, 130, 0.95),
+    rgba(255, 170, 60, 0.95)
+  );
+
+  box-shadow:
+    0 0 18px rgba(255, 190, 90, 0.9),
+    0 0 36px rgba(255, 140, 40, 0.6);
+
+  transition: all 0.35s ease;
+}
+
+/* OFF STATE */
+#active-sound-toggle.off {
+  background: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.6);
+
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+.active-sound:not(.hidden) #active-sound-toggle:not(.off) {
+  animation: goldPulse 3.5s ease-in-out infinite;
+}
+
+@keyframes goldPulse {
+  0% {
+    box-shadow:
+      0 0 16px rgba(255, 190, 90, 0.7),
+      0 0 30px rgba(255, 140, 40, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 24px rgba(255, 200, 120, 1),
+      0 0 46px rgba(255, 160, 60, 0.7);
+  }
+  100% {
+    box-shadow:
+      0 0 16px rgba(255, 190, 90, 0.7),
+      0 0 30px rgba(255, 140, 40, 0.4);
+  }
+}
