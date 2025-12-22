@@ -124,7 +124,7 @@ body {
 }
 
 
-/* 🎄 TREE SPARKLES CONTAINER */
+/*  TREE SPARKLES CONTAINER */
 #tree-sparkles {
   position: absolute;
 
@@ -139,8 +139,8 @@ body {
   overflow: hidden;
 }
 
-/* ✨ INDIVIDUAL SPARKLE */
-/* ✨ TREE SPARKLES & LIGHTS */
+/*  INDIVIDUAL SPARKLE */
+/*  TREE SPARKLES & LIGHTS */
 .tree-sparkle {
   position: absolute;
   width: 6px;
@@ -160,7 +160,7 @@ body {
     0 0 18px rgba(255,255,255,0.8);
 }
 
-/* 🎄 COLORED FAIRY LIGHTS */
+/* COLORED FAIRY LIGHTS */
 .tree-light {
   position: absolute;
   width: 7px;
@@ -178,7 +178,7 @@ body {
 #snow {
   position: absolute;
 
-  /* 🪟 PUSH DEEPER INTO WINDOW (away from curtain & tree) */
+  /* PUSH DEEPER INTO WINDOW (away from curtain & tree) */
   right: 6%;          /* ⬅️ moves snow right */
   top: 6%;
   width: 16%;         /* ⬅️ much narrower */
@@ -285,7 +285,7 @@ body {
   pointer-events: none;
 }
 
-/* ✅ Hotspot MUST accept clicks */
+/*  Hotspot MUST accept clicks */
 #fireplace-hotspot {
   pointer-events: auto;
 }
@@ -334,7 +334,7 @@ body {
     0 6px 20px rgba(0,0,0,0.35);
 }
 
-/* 🔥 EMBERS CONTAINER */
+/*  EMBERS CONTAINER */
 #embers {
   position: absolute;
 
@@ -355,7 +355,7 @@ body {
 
 
 
-/* 🔥 EMBER PARTICLES */
+/*  EMBER PARTICLES */
 .ember {
   position: absolute;
   bottom: 0;
@@ -409,7 +409,7 @@ body {
   z-index: 10 !important;
 }
 
-/* 🎵 FLOATING SOUND DECK (CINEMATIC) */
+/*  FLOATING SOUND DECK (CINEMATIC) */
 #sound-deck {
   position: fixed;
   bottom: 96px;
@@ -441,7 +441,7 @@ body {
 }
 
 
-/* 🎚️ SOUND CARD (ALIGNED + SCROLL SAFE) */
+/*  SOUND CARD (ALIGNED + SCROLL SAFE) */
 .sound-card {
   all: unset;
   cursor: pointer;
@@ -499,7 +499,7 @@ body {
 }
 
 
-/* 🔥 ACTIVE SOUND */
+/* ACTIVE SOUND */
 .sound-card.active {
   background: rgba(255,160,80,0.18);
   color: #fff;
@@ -526,8 +526,8 @@ body {
 
 }
 
-/* 🎚️ SCROLLABLE SOUND SLIDER */
-/* 🎵 FLOATING SOUND DECK (SCROLLABLE) */
+/* SCROLLABLE SOUND SLIDER */
+/* FLOATING SOUND DECK (SCROLLABLE) */
 #sound-deck {
   position: fixed;
   bottom: 96px;
@@ -655,7 +655,7 @@ body {
   opacity: 1;
   color: #fff;
 }
-/* 🎵 AUDIO MESSAGE TOAST */
+/* AUDIO MESSAGE TOAST */
 .audio-message {
   position: fixed;
 
@@ -702,7 +702,7 @@ body {
 .active-sound {
   position: fixed;
   left: 50%;
-  bottom: 180px;               /* above sound deck */
+  bottom: 240px;               /* above sound deck */
   transform: translateX(-50%);
 
   display: flex;
@@ -798,4 +798,54 @@ body {
       0 0 16px rgba(255, 190, 90, 0.7),
       0 0 30px rgba(255, 140, 40, 0.4);
   }
+}
+/* VOLUME SLIDER */
+#active-sound-volume {
+  width: 120px;
+  height: 4px;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: linear-gradient(
+    to right,
+    rgba(255, 200, 120, 0.95),
+    rgba(255, 140, 40, 0.85)
+  );
+
+  border-radius: 999px;
+  cursor: pointer;
+
+  box-shadow:
+    0 0 12px rgba(255, 180, 90, 0.6);
+
+  transition: box-shadow 0.3s ease;
+}
+
+/* Chrome / Safari thumb */
+#active-sound-volume::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+
+  background: rgba(255, 220, 160, 1);
+
+  box-shadow:
+    0 0 10px rgba(255, 200, 120, 1),
+    0 0 20px rgba(255, 160, 60, 0.8);
+
+  cursor: pointer;
+}
+
+/* Firefox thumb */
+#active-sound-volume::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 220, 160, 1);
+  border: none;
+  cursor: pointer;
 }

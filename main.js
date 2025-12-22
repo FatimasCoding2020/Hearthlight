@@ -1,5 +1,5 @@
 const fireGlow = document.getElementById("fire-glow");
-// 🔥 FIRE BODY MOVEMENT (PRIMARY FLAME MOTION)
+//  FIRE BODY MOVEMENT (PRIMARY FLAME MOTION)
 gsap.timeline({ repeat: -1, yoyo: true })
   .to("#fire-glow", {
     scaleX: 1.15,
@@ -18,7 +18,7 @@ gsap.timeline({ repeat: -1, yoyo: true })
     ease: "sine.inOut"
   });
 
-// 🔥 FIRE — ALWAYS ON (SINGLE TIMELINE, NO CONFLICTS)
+//  FIRE — ALWAYS ON (SINGLE TIMELINE, NO CONFLICTS)
 gsap.timeline({ repeat: -1, yoyo: true })
   .to(fireGlow, {
     scale: 1.12,
@@ -57,7 +57,7 @@ gsap.to("#heat-shimmer", {
 });
 
 
-  // 🔥 EMBERS — RISING FIRE PARTICLES
+  //  EMBERS — RISING FIRE PARTICLES
 const embersContainer = document.getElementById("embers");
 
 function createEmber() {
@@ -65,7 +65,7 @@ function createEmber() {
   ember.className = "ember";
   embersContainer.appendChild(ember);
 
-  // 🔥 START DEEPER & HOTTER
+  //  START DEEPER & HOTTER
   gsap.set(ember, {
     x: Math.random() * embersContainer.offsetWidth,
     y: embersContainer.offsetHeight - 6,   // ⬅️ INSIDE FIRE BED
@@ -73,7 +73,7 @@ function createEmber() {
     opacity: Math.random() * 0.6 + 0.6
   });
 
-  // 🔥 RISE STRONGER + WILDER
+  //  RISE STRONGER + WILDER
  gsap.to(ember, {
   y: -45 - Math.random() * 20,  // ⬆️ higher but capped
   x: "+=" + (Math.random() * 28 - 14),
@@ -86,7 +86,7 @@ function createEmber() {
 }
 
 
-// 🔥 SPAWN FASTER = INTENSE FIRE
+//  SPAWN FASTER = INTENSE FIRE
 setInterval(createEmber, 140);
 
 
@@ -96,7 +96,7 @@ const hotspot = document.getElementById("fireplace-hotspot");
 
 const treeSparkles = document.getElementById("tree-sparkles");
 
-/* ✨ WHITE TWINKLES (MORE DENSE) */
+/*  WHITE TWINKLES (MORE DENSE) */
 for (let i = 0; i < 48; i++) {
   const sparkle = document.createElement("div");
   sparkle.className = "tree-sparkle";
@@ -120,7 +120,7 @@ for (let i = 0; i < 48; i++) {
 });
 }
 
-/* 🎄 COLORED FAIRY LIGHTS */
+/*  COLORED FAIRY LIGHTS */
 const lightColors = [
   "rgba(255,80,80,1)",   // red
   "rgba(255,200,120,1)", // gold
@@ -170,7 +170,7 @@ for (let i = 0; i < 35; i++) {
     opacity: Math.random() * 0.6 + 0.4
   });
 
-  // ❄️ FALL DOWN
+  //  FALL DOWN
   gsap.to(flake, {
     y: snowContainer.offsetHeight + 20,
     duration: Math.random() * 6 + 6,
@@ -179,7 +179,7 @@ for (let i = 0; i < 35; i++) {
     delay: Math.random() * 5
   });
 
-  // ✨ SHIMMER
+  //  SHIMMER
   gsap.to(flake, {
     opacity: Math.random() * 0.6 + 0.4,
     scale: Math.random() * 0.6 + 0.8,
@@ -189,7 +189,7 @@ for (let i = 0; i < 35; i++) {
     ease: "power1.inOut"
   });
 
-  // 🌬️ SIDE DRIFT
+  //  SIDE DRIFT
   gsap.to(flake, {
     x: "+=" + (Math.random() * 80 - 40),
     duration: Math.random() * 8 + 6,
@@ -215,7 +215,7 @@ gsap.from("#logo", {
 
 
 /* ===============================
-   🎵 AMBIENT SOUND SYSTEM
+    AMBIENT SOUND SYSTEM
 ================================ */
 
 const soundDeck = document.getElementById("sound-deck");
@@ -233,7 +233,7 @@ function showAudioMessage(text) {
   }, 3000);
 }
 
-// 🔒 USER AUDIO LIMITS
+//  USER AUDIO LIMITS
 const MAX_SIZE_MB = 10;        // 10 MB max file size
 const MAX_DURATION = 15 * 60; // 15 minutes max duration
 
@@ -324,7 +324,7 @@ fileInput.addEventListener("change", (e) => {
   const file = e.target.files[0];
   if (!file) return;
 
-  // 🔒 FILE SIZE CHECK
+  //  FILE SIZE CHECK
 if (file.size > MAX_SIZE_MB * 1024 * 1024) {
   showAudioMessage(`Audio file too large (max ${MAX_SIZE_MB}MB)`);
 
@@ -335,7 +335,7 @@ if (file.size > MAX_SIZE_MB * 1024 * 1024) {
 const url = URL.createObjectURL(file);
 const audio = new Audio(url);
 
-// 🔒 DURATION CHECK (wait for metadata)
+//  DURATION CHECK (wait for metadata)
 audio.addEventListener("loadedmetadata", () => {
   if (audio.duration > MAX_DURATION) {
     showAudioMessage("Audio too long (max 15 minutes)");
@@ -363,7 +363,7 @@ audio.volume = 0;
     <span class="sound-remove">✕</span>
   `;
 
-  // 🗑️ REMOVE BUTTON — RIGHT HERE
+  //  REMOVE BUTTON — RIGHT HERE
   const removeBtn = card.querySelector(".sound-remove");
   removeBtn.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -420,6 +420,15 @@ audio.volume = 0;
 const activeCard = document.getElementById("active-sound-card");
 const activeName = document.getElementById("active-sound-name");
 const activeToggle = document.getElementById("active-sound-toggle");
+const activeVolume = document.getElementById("active-sound-volume");
+
+activeVolume.addEventListener("input", () => {
+  if (!currentAudio) return;
+
+  const volume = activeVolume.value / 100; // 0–1
+  currentAudio.volume = volume;
+});
+
 
 let currentAudio = null;
 let currentCard = null;
@@ -429,11 +438,15 @@ function showActiveSound(name, audio, card) {
   activeToggle.textContent = "ON";
   activeToggle.classList.remove("off");
 
+  //  sync slider with current audio volume
+  activeVolume.value = Math.round(audio.volume * 100);
+
   activeCard.classList.remove("hidden");
 
   currentAudio = audio;
   currentCard = card;
 }
+
 
 function hideActiveSound() {
   activeCard.classList.add("hidden");
@@ -488,7 +501,7 @@ document.addEventListener("mousemove", () => {
 });
 document.addEventListener("click", showSoundDeck);
 
-// ✅ keep deck open while user is interacting with it
+//  keep deck open while user is interacting with it
 soundDeck.addEventListener("mouseenter", () => {
   clearTimeout(uiTimeout);
 });
@@ -499,7 +512,7 @@ soundDeck.addEventListener("mouseleave", () => {
   }, 3200);
 });
 
-// ✅ on mobile: touching the deck should keep it open
+//  on mobile: touching the deck should keep it open
 soundDeck.addEventListener("touchstart", () => {
   clearTimeout(uiTimeout);
 }, { passive: true });
@@ -510,7 +523,7 @@ soundDeck.addEventListener("touchend", () => {
   }, 3200);
 }, { passive: true });
 
-// 🖱️ DRAG-TO-SCROLL FOR SOUND DECK (DESKTOP)
+// DRAG-TO-SCROLL FOR SOUND DECK (DESKTOP)
 let isDown = false;
 let startX;
 let scrollLeft;

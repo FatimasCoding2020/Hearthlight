@@ -16,7 +16,7 @@
 
 
   <main id="scene">
-<!-- 🎵 Ambient Sound Selector -->
+<!--  Ambient Sound Selector -->
 <div id="sound-deck">
 
   <button class="sound-card" data-sound="fire">
@@ -112,10 +112,20 @@
 <div id="active-sound-card" class="active-sound hidden">
   <span id="active-sound-name"></span>
 
+  <input
+    id="active-sound-volume"
+    type="range"
+    min="0"
+    max="100"
+    value="60"
+    aria-label="Volume"
+  />
+
   <button id="active-sound-toggle" aria-label="Toggle sound">
     ON
   </button>
 </div>
+
 
 <!-- Scripts LAST -->
 <script src="main.js"></script>
