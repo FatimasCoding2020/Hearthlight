@@ -53,7 +53,12 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+
+
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
+
 /* Living room image */
 #room {
   position: relative;
@@ -407,6 +412,14 @@ body {
 #embers,
 #heat-shimmer {
   z-index: 10 !important;
+}
+/* Prevent glows showing before room image loads */
+#fire-glow,
+#candle-glow,
+#heat-shimmer,
+#embers {
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
 
 /*  FLOATING SOUND DECK (CINEMATIC) */

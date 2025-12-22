@@ -1,3 +1,14 @@
+const roomImg = document.getElementById("room");
+const scene = document.getElementById("scene");
+
+if (roomImg.complete) {
+  scene.style.opacity = "1";
+} else {
+  roomImg.addEventListener("load", () => {
+    scene.style.opacity = "1";
+  });
+}
+
 const fireGlow = document.getElementById("fire-glow");
 //  FIRE BODY MOVEMENT (PRIMARY FLAME MOTION)
 gsap.timeline({ repeat: -1, yoyo: true })
