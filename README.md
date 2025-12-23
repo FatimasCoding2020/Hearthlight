@@ -5,7 +5,8 @@
 <p align="center">
   <img src="assets/logo/hearthlight2.png" alt="Hearthlight Logo" width="500"/>
 </p>
-🔗 **Deployed Project:** [https://fatimascoding2020.github.io/Hearthlight/]
+**Deployed Project:** https://fatimascoding2020.github.io/Hearthlight/
+
 
 ## Overview
 
