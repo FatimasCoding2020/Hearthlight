@@ -20,7 +20,7 @@ body {
 
 #logo {
   position: fixed;
-  top: -80px;   /* ⬅️ BIG MOVE UP */
+  top: -80px;  
   left: 24px;
 
   width: min(70vw, 420px);
@@ -80,7 +80,7 @@ body {
 
 #fire-glow {
   position: absolute;
-  left: 13.2%;   /* ⬅️ WAS ~18% — TOO RIGHT */
+  left: 13.2%;   
   top: 56%;
   width: 22%;
   height: 18%;
@@ -94,7 +94,7 @@ body {
   );
 
   filter: blur(30px);
-  opacity: 0.8;   /* 🔥 visible by default */
+  opacity: 0.8;  
   mix-blend-mode: screen;
   z-index: 2;
 }
@@ -109,7 +109,7 @@ body {
 
   pointer-events: none;
 
-  z-index: 3; /* ⬅️ ABOVE ROOM */
+  z-index: 3; 
 
   background: radial-gradient(
     circle at center,
@@ -130,7 +130,7 @@ body {
 #tree-sparkles {
   position: absolute;
 
-  /* ⬅️ Adjust these to match YOUR tree */
+  
   left: 52%;
   top: 40%;
   width: 22%;
@@ -180,26 +180,26 @@ body {
 #snow {
   position: absolute;
 
-  /* PUSH DEEPER INTO WINDOW (away from curtain & tree) */
-  right: 6%;          /* ⬅️ moves snow right */
+
+  right: 6%;         
   top: 6%;
-  width: 16%;         /* ⬅️ much narrower */
-  height: 46%;        /* ⬅️ avoids sill/star */
+  width: 16%;         
+  height: 46%;        
 
   z-index: 3;
   pointer-events: none;
   overflow: hidden;
 
-  /* ❄️ Outside illusion */
+
   filter: blur(0.6px) brightness(1.3);
   opacity: 0.85;
 
-  /* ✂️ HARD MASK: CUT LEFT + BOTTOM */
+ 
   clip-path: inset(
     0%    /* top */
     0%    /* right */
     18%   /* bottom */
-    18%   /* left ⬅️ THIS FIXES CURTAIN */
+    18%   
   );
 }
 
@@ -260,7 +260,7 @@ body {
 }
 
 #cursor span {
-  display: none; /* 🔥 removes "Explore" text completely */
+  display: none; 
 }
 
 /* Hover state */
@@ -274,7 +274,7 @@ body {
   transform: translateY(0);
 }
 
-/* 🔒 Disable pointer events on visual layers */
+
 #room,
 #fire-glow,
 #candle-glow,
@@ -282,12 +282,12 @@ body {
   pointer-events: none;
 }
 
-/* 🔒 Cursor should never block clicks */
+
 #cursor {
   pointer-events: none;
 }
 
-/*  Hotspot MUST accept clicks */
+
 #fireplace-hotspot {
   pointer-events: auto;
 }
@@ -340,7 +340,7 @@ body {
 #embers {
   position: absolute;
 
-  left: 13.2%;   /* ⬅️ MATCH EXACTLY */
+  left: 13.2%;   
 
 
   top: 46%;
@@ -362,7 +362,7 @@ body {
   position: absolute;
   bottom: 0;
 
-  width: 6px;      /* ⬅️ smaller */
+  width: 6px;      
   height: 6px;
   border-radius: 50%;
 
@@ -386,7 +386,7 @@ body {
 
 #heat-shimmer {
   position: absolute;
-  left: 13.2%;   /* ⬅️ SAME VALUE */
+  left: 13.2%;  
 
   top: 44%;
   width: 20%;
@@ -419,7 +419,7 @@ body {
 
 
 
-/*  FLOATING SOUND DECK (CINEMATIC) */
+
 #sound-deck {
   position: fixed;
   bottom: 96px;
@@ -451,7 +451,7 @@ body {
 }
 
 
-/*  SOUND CARD (ALIGNED + SCROLL SAFE) */
+
 .sound-card {
   all: unset;
   cursor: pointer;
@@ -471,10 +471,10 @@ body {
   text-transform: uppercase;
   color: rgba(255,255,255,0.8);
 
-  white-space: nowrap;   /* prevents text wrapping */
-  line-height: 1;        /* fixes vertical misalignment */
+  white-space: nowrap;   
+  line-height: 1;       
 
-  flex: 0 0 auto;        /* 🔥 CRITICAL for scrolling */
+  flex: 0 0 auto;        
 
   transition:
     background 0.3s ease,
@@ -492,15 +492,15 @@ body {
 }
 
 
-/* 🔘 TOGGLE DOT */
+/* TOGGLE DOT */
 .sound-toggle {
   width: 8px;
   height: 8px;
   border-radius: 999px;
 
-  display: block;        /* ✅ prevents inline stretching */
-  flex: 0 0 8px;         /* ✅ prevents flex distortion */
-  aspect-ratio: 1 / 1;   /* ✅ guarantees circle */
+  display: block;        
+  flex: 0 0 8px;         
+  aspect-ratio: 1 / 1;   
 
   background: rgba(255,255,255,0.3);
   box-shadow: 0 0 0 rgba(255,180,80,0);
@@ -524,7 +524,16 @@ body {
     0 0 12px rgba(255,180,90,0.9);
 }
 
-/* 📱 MOBILE FRIENDLY */
+/* Allow active sound name to expand properly */
+#active-sound-name {
+  max-width: 240px;        /* prevents insane long names */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;                 /* allow text to take space */
+}
+
+/* MOBILE FRIENDLY */
 @media (max-width: 640px) {
   #sound-deck {
     bottom: 80px;
@@ -561,11 +570,11 @@ body {
 
   z-index: 998;
 
-  /* 👇 IMPORTANT */
+ 
   opacity: 0;
-  pointer-events: auto;   /* ✅ ALWAYS AUTO */
+  pointer-events: auto;   
 
-  /* 👇 SCROLL */
+  /* SCROLL */
   max-width: min(92vw, 900px);
   overflow-x: auto;
   overflow-y: hidden;
@@ -587,7 +596,7 @@ body {
   transform: translateX(-50%) translateY(0);
 }
 
-/* 🚫 Disable text selection highlight */
+
 * {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -595,17 +604,17 @@ body {
   user-select: none;
 }
 
-/* 🚫 Remove mobile / chrome tap highlight */
+
 * {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* 🚫 Remove focus outline glow */
+
 *:focus {
   outline: none;
 }
 
-/* 🚫 Prevent selection background */
+
 ::selection {
   background: transparent;
 }
@@ -631,7 +640,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  border-radius: 50%;          /* ✅ perfect circle */
+  border-radius: 50%;         
   font-size: 14px;
   font-weight: 600;
 
@@ -648,7 +657,7 @@ body {
 }
 
 
-/* 🗑️ Remove user-added sound button */
+
 .sound-remove {
   margin-left: 8px;
   font-size: 12px;
@@ -669,13 +678,13 @@ body {
 .audio-message {
   position: fixed;
 
-  /* ⬆️ Move ABOVE the sound deck */
+  
   bottom: 280px;
 
   left: 50%;
   transform: translateX(-50%) translateY(10px);
 
-  /* 🌤️ Softer, warmer look */
+
   background: rgba(40, 40, 40, 0.65);
   color: rgba(255, 255, 255, 0.95);
 
@@ -712,17 +721,20 @@ body {
 .active-sound {
   position: fixed;
   left: 50%;
-  bottom: 240px;               /* above sound deck */
+  bottom: 240px;              
   transform: translateX(-50%);
 
   display: flex;
   align-items: center;
   gap: 16px;
 
-  padding: 18px 26px;
-  border-radius: 18px;         /* ⬅️ slightly square */
+  width: 360px;          /* ADD: fixed width */
+  max-width: 90vw;       /* ADD: mobile safety */
 
-  background: rgba(120, 20, 20, 0.35);  /* 🎄 transparent warm red */
+  padding: 18px 22px;    /* slightly tighter */
+  border-radius: 18px;       
+
+  background: rgba(120, 20, 20, 0.35);  
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
@@ -737,6 +749,8 @@ body {
 
   z-index: 10002;
 
+  overflow: hidden;     /* 🔥 ADD: prevents resize */
+
   transition:
     opacity 0.35s ease,
     transform 0.35s ease,
@@ -750,6 +764,19 @@ body {
   transform: translateX(-50%) translateY(12px);
   pointer-events: none;
 }
+#active-sound-name {
+  max-width: 160px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+#active-sound-name span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scrollSoundName 8s linear infinite;
+}
+
 
 
 /* TOGGLE BUTTON */
@@ -761,8 +788,8 @@ body {
   align-items: center;
   justify-content: center;
 
-  min-width: 44px;      /* prevents stretching */
-  padding: 8px 16px;
+  width: 56px;              /* FIXED WIDTH */
+  padding: 8px 0;           /* NO HORIZONTAL GROWTH */
 
   border-radius: 999px;
 
@@ -785,6 +812,7 @@ body {
   white-space: nowrap;
   transition: all 0.35s ease;
 }
+
 
 
 /* OFF STATE */
@@ -866,4 +894,128 @@ body {
   background: rgba(255, 220, 160, 1);
   border: none;
   cursor: pointer;
+} 
+
+@media (max-width: 768px) {
+
+  #scene {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  #room {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #logo {
+    top: 12px;
+    left: 12px;
+    width: 220px;
+  }
+
+  /* REMOVE EMBERS */
+  #embers,
+  .ember {
+    display: none !important;
+  }
+
+  /*  REMOVE SNOW */
+  #snow,
+  .snowflake {
+    display: none !important;
+  }
+
+    /* TREE LIGHTS — EXTREME RIGHT & HIGH (MOBILE) */
+  #tree-sparkles {
+    position: absolute !important;
+
+    left: auto !important;
+    right: 1.5% !important;
+    top: 28% !important;
+
+    width: 26% !important;
+    height: 38% !important;
+
+    transform: none !important;
+    opacity: 1 !important;
+    display: block !important;
+  }
+
+  #fire-glow {
+    left: 10%;
+    top: 60%;
+    width: 26%;
+    height: 20%;
+  }
+
+  #heat-shimmer {
+    left: 10%;
+    top: 50%;
+    width: 24%;
+    height: 22%;
+  }
+}
+/* Active sound name container */
+#active-sound-name {
+  position: relative;
+  max-width: 240px;
+  height: 1.4em;
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
+
+  /* hide static text but keep space */
+  visibility: hidden;
+}
+
+/* scrolling marquee text */
+#active-sound-name::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 100%;
+  top: 0;
+
+  padding-left: 24px;
+  white-space: nowrap;
+
+  visibility: visible;
+  color: #fff;
+
+  animation: scrollSoundName 8s linear infinite;
+}
+/* Active sound name marquee animation */
+@keyframes scrollSoundName {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-160%);
+  }
+}
+
+
+
+/* ======================================
+   MOBILE LANDSCAPE ONLY FIX
+====================================== */
+@media (orientation: landscape) and (max-height: 500px) {
+
+  /* Logo: smaller in landscape only */
+  #logo {
+    width: 180px;   /* ~50% smaller */
+    top: 8px;
+    left: 12px;
+  }
+
+  /* Embers: keep them LOW in fireplace */
+  #embers {
+    top: 58%;       /* push origin DOWN */
+    height: 7%;     /* limit vertical rise */
+    overflow: hidden;
+  }
 }

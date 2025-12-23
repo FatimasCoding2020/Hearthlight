@@ -10,7 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ).forEach(el => (el.style.opacity = ""));
 
     // start embers
-    startEmbers();
+    if (window.innerWidth > 768) {
+  startEmbers();
+}
+
+
 
     // play gsap
     gsap.globalTimeline.play();
@@ -22,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     roomImg.addEventListener("load", reveal, { once: true });
 
-    // ✅ fallback: never stay “hidden” forever
+    // fallback: never stay “hidden” forever
     setTimeout(reveal, 2500);
   }
 });
@@ -116,7 +120,7 @@ function createEmber() {
 
   //  RISE STRONGER + WILDER
  gsap.to(ember, {
-  y: -45 - Math.random() * 20,  // ⬆️ higher but capped
+  y: -45 - Math.random() * 20,  // higher but capped
   x: "+=" + (Math.random() * 28 - 14),
   opacity: 0,
   scale: 0,
@@ -144,7 +148,7 @@ for (let i = 0; i < 48; i++) {
 
   gsap.set(sparkle, {
   x: Math.random() * treeSparkles.offsetWidth,
-  y: Math.random() * treeSparkles.offsetHeight * 0.7, // ⬅️ TREE ONLY
+  y: Math.random() * treeSparkles.offsetHeight * 0.7, // TREE ONLY
   scale: Math.random() * 0.6 + 0.4
 });
 
@@ -178,7 +182,7 @@ for (let i = 0; i < 22; i++) {
 
   gsap.set(light, {
   x: Math.random() * treeSparkles.offsetWidth,
-  y: Math.random() * treeSparkles.offsetHeight * 0.7, // ⬅️ UP
+  y: Math.random() * treeSparkles.offsetHeight * 0.7, // UP
   scale: Math.random() * 0.9 + 0.6
 });
 
@@ -238,19 +242,6 @@ for (let i = 0; i < 35; i++) {
     ease: "sine.inOut"
   });
 }
-
-
-
-// LOGO INTRO ANIMATION
-gsap.from("#logo", {
-  opacity: 0,
-  duration: 1.6,
-  ease: "power3.out",
-  delay: 0.4
-});
-
-
-
 
 
 
@@ -421,7 +412,7 @@ audio.volume = 0;
 
   if (!isActive) {
 
-    // 🔥 STOP PREVIOUS SOUND
+    // STOP PREVIOUS SOUND
     if (currentAudio && currentAudio !== audio) {
       fadeOut(currentAudio);
       if (currentCard) currentCard.classList.remove("active");
@@ -447,9 +438,9 @@ audio.volume = 0;
 
   fileInput.value = "";
 
-}); // ✅ closes audio.addEventListener("loadedmetadata")
+}); // closes audio.addEventListener("loadedmetadata")
 
-}); // ✅ closes fileInput.addEventListener("change")
+}); // closes fileInput.addEventListener("change")
 
 /* ===============================
     ACTIVE SOUND CARD
@@ -472,14 +463,17 @@ let currentAudio = null;
 let currentCard = null;
 
 function showActiveSound(name, audio, card) {
-  activeName.textContent = name;
+ activeName.innerHTML = `<span>${name}</span>`;
+
+activeName.setAttribute("data-text", name);
+
   activeToggle.textContent = "ON";
   activeToggle.classList.remove("off");
 
-  // 🔥 RESET SLIDER TO MIDDLE
+  // RESET SLIDER TO MIDDLE
   activeVolume.value = DEFAULT_VOLUME * 100;
 
-  // 🔥 SYNC AUDIO TO SLIDER
+  // SYNC AUDIO TO SLIDER
   audio.volume = DEFAULT_VOLUME;
 
   activeCard.classList.remove("hidden");
