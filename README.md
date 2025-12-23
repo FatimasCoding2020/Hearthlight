@@ -4,7 +4,7 @@
 > *A cinematic, interactive festive winter ambience experience.*
 
 <p align="center">
-  <img src="assets/logo/hearthlight2.svg" alt="Hearthlight Logo" width="300"/>
+  <img src="assets/logo/hearthlight2.svg" alt="Hearthlight Logo" width="500"/>
 </p>
 
 🔗 **Deployed Project:** [https://fatimascoding2020.github.io/Hearthlight/]
@@ -139,13 +139,13 @@ hearthlight/
 ## Wireframes
 
 ### Desktop View
-![Desktop Wireframe](assets/wireframes/desktop-wireframe.png)
+![Desktop Wireframe](assets/desktop-wireframe.png)
 
 ### Mobile – Portrait
-![Mobile Portrait Wireframe](assets/wireframes/mobile-portrait-wireframe.png)
+![Mobile Portrait Wireframe](assets/mobile-portrait-wireframe.png)
 
 ### Mobile – Landscape
-![Mobile Landscape Wireframe](assets/wireframes/mobile-landscape-wireframe.png)
+![Mobile Landscape Wireframe](assets/mobile-landscape-wireframe.png)
 
 
 
@@ -196,7 +196,7 @@ Verified on:
 
 ## Contributors
 
-* **Syeda Fatima Omer- https://github.com/FatimasCoding2020** and **Freddie- https://github.com/Shieldsx**— Design, Animation, Audio System, UI/UX
+* **Syeda Fatima Omer- https://github.com/FatimasCoding2020** and **Freddie- https://github.com/Shieldsx** Design, Animation, Audio System, UI/UX
 
 
 ---
