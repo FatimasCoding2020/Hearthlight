@@ -1,17 +1,4 @@
 * 
-/* Black screen fix on first un-cached start up*/
-html {
-  background: black;
-}
-
-.scene,
-#fire-glow,
-#candle-glow {
-  opacity: 0;
-  visibility: hidden;
-}
-
-
 html, body {
   margin: 0;
   padding: 0;
@@ -58,7 +45,9 @@ body {
 }
 
 
-
+body.loading .scene {
+  display: none;
+}
 
 
 #scene {
