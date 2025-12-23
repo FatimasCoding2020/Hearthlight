@@ -14,7 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
   startEmbers();
 }
 
-
+// Black screen fix //
+window.addEventListener("load", () => {
+  document.querySelector(".scene").style.visibility = "visible";
+  document.querySelector(".scene").style.opacity = "1";
+});
 
     // play gsap
     gsap.globalTimeline.play();

@@ -1,4 +1,17 @@
 * 
+/* Black scrren fix on first un-cached start up*/
+html {
+  background: black;
+}
+
+.scene,
+#fireglow,
+#candleglow {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
 html, body {
   margin: 0;
   padding: 0;
@@ -545,7 +558,6 @@ body {
 
 }
 
-/* SCROLLABLE SOUND SLIDER */
 /* FLOATING SOUND DECK (SCROLLABLE) */
 #sound-deck {
   position: fixed;
