@@ -196,7 +196,7 @@ Verified on:
 
 ## Contributors
 
-* **Syeda Fatima Omer- https://github.com/FatimasCoding2020** and **Freddie- https://github.com/Shieldsx** Design, Animation, Audio System, UI/UX
+* **Syeda Fatima Omer- https://github.com/FatimasCoding2020** and **Freddie- https://github.com/Shieldsx**  -Design, Animation, Audio System, UI/UX
 
 
 ---
