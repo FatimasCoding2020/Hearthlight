@@ -3,7 +3,7 @@
 
 > *A cinematic, interactive festive winter ambience experience.*
 <p align="center">
-  <img src="assets/logo/hearthlight3.svg" alt="Hearthlight Logo" width="500"/>
+  <img src="assets/logo/hearthlight2.png" alt="Hearthlight Logo" width="500"/>
 </p>
 🔗 **Deployed Project:** [https://fatimascoding2020.github.io/Hearthlight/]
 
@@ -140,9 +140,7 @@ hearthlight/
 ![Desktop Wireframe](assets/desktop-wireframe.png)
 
 ### Mobile – Portrait
-<p align="center">
-  <img src="assets/mobile-potrait-wireframe.png" alt="Portrait Wireframe" width="250" />
-</p>
+![Mobile Portrait Wireframe](assets/mobile-portrait-wireframe.png)
 
 ### Mobile – Landscape
 ![Mobile Landscape Wireframe](assets/mobile-landscape-wireframe.png)
