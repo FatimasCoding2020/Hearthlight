@@ -45,10 +45,6 @@ body {
 }
 
 
-body.loading .scene {
-  display: none;
-}
-
 
 #scene {
   position: relative;

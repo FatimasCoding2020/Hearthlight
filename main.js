@@ -29,14 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-/* Preload the background image for black screen fix */
-const bgImage = new Image();
-bgImage.src = "../images/room-background.png"; // EXACT path
-
-bgImage.onload = () => {
-  document.body.classList.remove("loading");
-};
-
 
 const fireGlow = document.getElementById("fire-glow");
 //  FIRE BODY MOVEMENT (PRIMARY FLAME MOTION)
