@@ -1,12 +1,12 @@
 * 
-/* Black scrren fix on first un-cached start up*/
+/* Black screen fix on first un-cached start up*/
 html {
   background: black;
 }
 
 .scene,
-#fireglow,
-#candleglow {
+#fire-glow,
+#candle-glow {
   opacity: 0;
   visibility: hidden;
 }
