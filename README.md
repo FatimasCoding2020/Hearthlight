@@ -14,6 +14,7 @@ Deployed Project: https://fatimascoding2020.github.io/Hearthlight/
 
 Hearthlight focuses on **mood, polish, and immersion**, using animation and sound to create an emotionally engaging digital space.
 
+> Built during the Code Institute December Festive Frontend Hackathon, under time constraints, with a strong focus on immersive UX and performance.
 ---
 
 ## User Stories
@@ -193,8 +194,15 @@ Verified on:
 
 ## Contributors
 
-* **Syeda Fatima Omer- https://github.com/FatimasCoding2020** and **Freddie- https://github.com/Shieldsx**  -Design, Animation, Audio System, UI/UX
+- **Syeda Fatima Omer** - Frontend Developer · Scrum Master  
+  GitHub: https://github.com/FatimasCoding2020  
+  *Frontend development and feature implementation, UI/UX design, GSAP animations, ambient audio system, responsive layout, and project coordination.*
 
+- **Freddie** - Frontend Developer  
+  GitHub: https://github.com/Shieldsx  
+  *Frontend development and feature implementation, UI/UX design, GSAP animations, ambient audio system, responsive layout, and project coordination.*
+
+> Roles reflect responsibilities undertaken collaboratively during the hackathon.
 
 ---
 
